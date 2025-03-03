@@ -1,51 +1,61 @@
-//calculadora - funciones en JS
+//calculadora - funciones en JS, con funciones solicitadas
 alert('Bienvenido a la calculadora');
 
-// llamada a la funcion 
-operacion();
-
-
-//funcion para realizar operaciones
-function operacion() {
-    let quesUser = prompt("¿Qué operación deseas realizar? \n 1. Suma \n 2. Resta \n 3. Multiplicación \n 4. División \n 5. Salir");
-    console.log(quesUser);
-    
-    //se verifica si us quiere salir antes de pedir numeros
-    if (quesUser === '5') {
-        alert('Gracias por usar la calculadora');
-        return
-    }
-    
-    let = num1 = parseInt(prompt("Ingresa el primer valor"));
-    let = num2 = parseInt(prompt("Ingresa el segundo valor"));
-
-    if (quesUser === '1') {
-        let suma = num1 + num2;
-        alert(`El resultado de la suma es: ${suma}`);
-        console.log(suma);
-        return operacion();
-    }
-    else if (quesUser === '2') {
-        let resta = num1 - num2;
-        alert(`El resultado de la resta es: ${resta}`);
-        console.log(resta);
-        return operacion();
-    }
-    else if (quesUser === '3') {
-        let multi = num1 * num2;
-        alert(`El resultado de la multiplicación es: ${multi}`);
-        console.log(multi);
-        return operacion();
-    }
-    else if (quesUser === '4') {
-        let div = num1 / num2;
-        alert(`El resultado de la división es: ${div}`);
-        console.log(div);
-        return operacion();
-    }
-    else {
-        alert('Opcion no valida, intenta de nuevo');
-    }
-   return operacion(); // Volver a llamar a la función si no se eligió salir
+function suma(a, b) {
+    return a + b;
 }
+
+function resta(a, b) {
+    return a - b;
+}
+
+function multiplicacion(a, b) {
+    return a * b;
+}
+
+function division(a, b) {
+    if (b === 0) {
+        return "Error: No se puede dividir por cero.";
+    }
+    return a / b;
+}
+
+function calculadora() {
+    while (true) {
+        let opcion = prompt("¿Qué operación deseas realizar?\n1. Suma\n2. Resta\n3. Multiplicación\n4. División\n5. Salir");
+
+        if (opcion === '5') {
+            alert("Hasta la próxima");
+            break;
+        }
+
+        let num1 = parseFloat(prompt("Ingresa el primer número:"));
+        let num2 = parseFloat(prompt("Ingresa el segundo número:"));
+
+        let resultado;
+
+        switch (opcion) {
+            case '1':
+                resultado = suma(num1, num2);
+                break;
+            case '2':
+                resultado = resta(num1, num2);
+                break;
+            case '3':
+                resultado = multiplicacion(num1, num2);
+                break;
+            case '4':
+                resultado = division(num1, num2);
+                break;
+            default:
+                alert("Opción no válida, intenta de nuevo.");
+                continue; // Evita imprimir resultado si la opción es inválida
+        }
+
+        alert(`El resultado es: ${resultado}`);
+    }
+}
+
+// Llamar a la calculadora
+calculadora();
    
